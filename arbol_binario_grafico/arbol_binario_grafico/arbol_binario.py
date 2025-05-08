@@ -68,3 +68,20 @@ class ArbolBinario:
         def _postorden(nodo):
             return _postorden(nodo.izquierda) + _postorden(nodo.derecha) + [nodo.valor] if nodo else []
         return _postorden(self.raiz)
+
+    def por_niveles(self):
+            if not self.raiz:
+                return []
+
+            resultado = []
+            cola = [self.raiz]
+
+            while cola:
+                nodo = cola.pop(0)
+                resultado.append(nodo.valor)
+                if nodo.izquierda:
+                    cola.append(nodo.izquierda)
+                if nodo.derecha:
+                    cola.append(nodo.derecha)
+
+            return resultado

@@ -17,9 +17,10 @@ class AppArbol:
         tk.Button(botones, text="Insertar", command=self.insertar).pack(side=tk.LEFT, padx=5)
         tk.Button(botones, text="Buscar", command=self.buscar).pack(side=tk.LEFT, padx=5)
         tk.Button(botones, text="Eliminar", command=self.eliminar).pack(side=tk.LEFT, padx=5)
-        tk.Button(botones, text="Mostrar Inorden", command=self.mostrar_inorden).pack(side=tk.LEFT, padx=5)
-        tk.Button(botones, text="Mostrar Preorden", command=self.mostrar_preorden).pack(side=tk.LEFT, padx=5)
-        tk.Button(botones, text="Mostrar Postorden", command=self.mostrar_postorden).pack(side=tk.LEFT, padx=5)
+        tk.Button(botones, text="Inorden", command=self.mostrar_inorden).pack(side=tk.LEFT, padx=5)
+        tk.Button(botones, text="Preorden", command=self.mostrar_preorden).pack(side=tk.LEFT, padx=5)
+        tk.Button(botones, text="Postorden", command=self.mostrar_postorden).pack(side=tk.LEFT, padx=5)
+        tk.Button(botones, text="Por niveles", command=self.mostrar_por_niveles).pack(side=tk.LEFT, padx=5)
 
         self.canvas = tk.Canvas(root, width=600, height=400, bg="white")
         self.canvas.pack(pady=10)
@@ -45,15 +46,19 @@ class AppArbol:
 
     def mostrar_inorden(self):
         valores = self.arbol.inorden()
-        messagebox.showinfo("Recorrido Inorden", " -> ".join(map(str, valores)))
+        messagebox.showinfo("Inorden", " -> ".join(map(str, valores)))
 
     def mostrar_preorden(self):
         valores = self.arbol.preorden()
-        messagebox.showinfo("Recorrido Preorden", " -> ".join(map(str, valores)))
+        messagebox.showinfo("Preorden", " -> ".join(map(str, valores)))
 
     def mostrar_postorden(self):
         valores = self.arbol.postorden()
-        messagebox.showinfo("Recorrido Postorden", " -> ".join(map(str, valores)))
+        messagebox.showinfo("Postorden", " -> ".join(map(str, valores)))
+
+    def mostrar_por_niveles(self):
+        valores = self.arbol.por_niveles()
+        messagebox.showinfo("Por niveles", " -> ".join(map(str, valores)))
 
     def obtener_valor(self):
         try:
